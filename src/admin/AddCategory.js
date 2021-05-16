@@ -34,27 +34,18 @@ const AddCategory = () => {
 				setName("");
 			}
 		});
+	};
 
-		//React Tostify Message
-		const successMessage = () => {
-			if (success) {
-				toast("Category created successfully", {
-					//This is how toast can declare:- toast("",type)
-					type: "success",
-				});
-			}
-		};
-		successMessage();
+	const successMessage = () => {
+		if (success) {
+			return <h4 className="alert alert-success mt-3">Category created successfully</h4>;
+		}
+	};
 
-		const errorMessage = () => {
-			if (error) {
-				toast("Failed to create Category", {
-					//This is how toast can declare:- toast("",type)
-					type: "error",
-				});
-			}
-		};
-		errorMessage();
+	const warningMessage = () => {
+		if (error) {
+			return <h4 className="text-success">Failed to create category</h4>;
+		}
 	};
 
 	//form creation
@@ -95,9 +86,10 @@ const AddCategory = () => {
 			description="Add a new Category of your Product"
 			className="container bg-info p-4"
 		>
-			<ToastContainer />
 			<div className="row bg-white rounded">
 				<div className="col-md-8 offset-md-2 p-4">
+					{successMessage()}
+					{warningMessage()}
 					{myCategorieForm()}
 					{goBack()}
 				</div>
